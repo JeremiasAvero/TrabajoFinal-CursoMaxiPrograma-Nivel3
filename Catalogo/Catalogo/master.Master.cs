@@ -19,7 +19,7 @@ namespace Catalogo
             Admin = false;
 
 
-            if(!(Page is MenuLogin || Page is Default || Page is MenuRegistrarse))
+            if(!(Page is MenuLogin || Page is Default || Page is MenuRegistrarse || Page is Error || Page is Productos))
             {
                 if (!(seguridad.SesionActiva(Session["usuario"])))
                 {
@@ -29,17 +29,13 @@ namespace Catalogo
             if (seguridad.SesionActiva(Session["usuario"]))
             {
                 Usuario usuario = (Usuario)Session["usuario"];
-                lblUser.Text = usuario.Nombre;
-                if (!string.IsNullOrEmpty(usuario.UrlImagen))
-                    imgAvatar.ImageUrl = "~/Images/" + usuario.UrlImagen;
-                else
-                    imgAvatar.ImageUrl = "https://simg.nicepng.com/png/small/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png";
+                //lblUser.Text = usuario.Nombre;
+                //if (!string.IsNullOrEmpty(usuario.UrlImagen))
+                  //  imgAvatar.ImageUrl = "~/Images/" + usuario.UrlImagen;
+                //else
+                  //  imgAvatar.ImageUrl = "https://simg.nicepng.com/png/small/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png";
 
             }
-
-
-
-
 
             if (seguridad.EsAdmin(Session["usuario"]))
             {
@@ -55,6 +51,18 @@ namespace Catalogo
         {
             Session.Remove("usuario");
             Response.Redirect("Default.aspx");
+        }
+
+        protected void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text != null)
+            {
+
+                Session.Add("filtro", txtFiltro.Text);
+
+            }
+            Response.Redirect("Productos.aspx");
+            
         }
     }
 }

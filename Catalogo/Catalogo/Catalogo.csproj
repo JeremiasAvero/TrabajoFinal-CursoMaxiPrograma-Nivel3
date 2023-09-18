@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AltaArticulos.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Favoritos.aspx" />
     <Content Include="ListaArticulos.aspx" />
     <Content Include="Default.aspx" />
@@ -76,6 +77,11 @@
     <Content Include="MenuLogin.aspx" />
     <Content Include="MenuRegistrarse.aspx" />
     <Content Include="MiPerfil.aspx" />
+    <Content Include="Productos.aspx" />
+    <Content Include="Script\SliderScript.js" />
+    <Content Include="Style\GeneralStyle.css" />
+    <Content Include="Style\SliderStyle.css" />
+    <Content Include="Style\HeaderStyle.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +91,13 @@
     </Compile>
     <Compile Include="AltaArticulos.aspx.designer.cs">
       <DependentUpon>AltaArticulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Favoritos.aspx.cs">
       <DependentUpon>Favoritos.aspx</DependentUpon>
@@ -144,6 +157,13 @@
     </Compile>
     <Compile Include="MiPerfil.aspx.designer.cs">
       <DependentUpon>MiPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Productos.aspx.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Productos.aspx.designer.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,142 @@
+﻿
+
+body{
+}
+a {
+    text-decoration: none;
+}
+
+.header {
+    position: sticky !important;
+    top: 0 !important;
+    width: 100%;
+    margin: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+    background-color:white;
+}
+
+    .header .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height:70%;
+    }
+
+        .header .header-top .header-list ul {
+            justify-content:center;
+            margin:0;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            margin-bottom: 30px;
+            margin-top:30px;
+        }
+
+        .header .header-top .header-list a {
+            margin: 0;
+            color: black;
+            margin-right: 30px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.3em;
+            text-decoration: none;
+        }
+
+        .header .header-top .header-logo {
+            display: flex;
+            height: 150px;
+            width: 150px;
+            margin: 10px;
+            margin-left: 100px;
+        }
+
+            .header .header-top .header-logo a {
+                height: 100%;
+                width: 100%;
+            }
+            .header .header-top .header-logo a img{
+                object-fit:contain;
+                height: 100%;
+                width: 100%;
+            }
+
+        .header .header-top .header-perfil {
+            display: flex;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            border-radius: 50px;
+            margin-right: 100px;
+        }
+
+            .header .header-top .header-perfil a img {
+                object-fit: contain;
+                height: 100%;
+                width: 100%;
+                margin: 0 auto;
+                border-radius: 50px;
+            }
+
+
+    .header .header-buscar {
+        padding:10px;
+        align-items: center;
+        justify-content: center;
+        display: block;
+        width: 100%;
+        background-color:rebeccapurple;
+    }
+
+        .header .header-buscar input {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            display: flex;
+            width: 50%;
+            height: 40px;
+
+        }
+
+@media only screen and (max-width: 850px) {
+    .header .header-top .header-list{
+        width: 40%;
+    }
+
+        .header .header-top .header-list a {
+            margin:0;
+            margin-right:9px;
+            font-size: 0.7em;
+        }
+   }
+
+
+@media only screen and (max-width: 700px) {
+
+    .header .header-top .header-perfil {
+        margin-right:30px;
+        height:60px;
+        width:60px;
+
+    }
+    .header .header-top .header-logo {
+        margin-right:0x;
+        margin-left: 20px;
+        height: 70px;
+        width: 70px;
+    }
+
+    .header .header-top .header-list a {
+        margin-left:0;
+        margin-right: 6px;
+    }
+    }
+
+@media only screen and (max-width: 460px){
+    .header .header-top .header-perfil {
+        margin-right: 20px;
+        height: 50px;
+        width: 50px;
+    }
+}

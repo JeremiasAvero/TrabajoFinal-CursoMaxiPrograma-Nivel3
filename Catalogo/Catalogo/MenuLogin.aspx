@@ -4,24 +4,22 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="row">
-        <div class="col-4">
-            <div class="mb-3">
-                <asp:Label Text="Usuario" ID="lblEmail" cssClass="form-label" runat="server" />
-                <asp:TextBox runat="server" ID="txtEmail" TextMode="Email" CssClass="form-control" />
-            </div>
-            <div class="mb-3">
-                <asp:Label Text="Contraseña" ID="lblPassword" runat="server" cssClass="form-label" />
-                <asp:TextBox runat="server" ID="txtPassword" textMode="Password" CssClass="form-control"/>
-            </div>
-            <asp:Button runat="server" ID="btnIngresar" OnClick="btnIngresar_Click" cssClass="btn btn-secondary"  Text="Ingresar" />
-            <a href="Default.aspx" class="btn btn-secondary" >Volver</a>
+    <div class="form-container">
+
+        <div class="form-text">
+            <asp:Label Text="Usuario" ID="lblEmail" runat="server" />
+            <asp:TextBox runat="server" ID="txtEmail" TextMode="Email" CssClass="form-control" />
+        </div>
+
+        <div class="form-text">
+            <asp:Label Text="Contraseña" ID="lblPassword" runat="server"  />
+            <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" CssClass="form-control" />
+        </div>
+        <div class="login-ingresar">
+            <asp:Button runat="server" ID="btnIngresar" CssClass="boton-ingresar" OnClick="btnIngresar_Click"  Text="Ingresar" />
+            <button class="boton-ingresar"><a href="MenuRegistrarse.aspx">Crear Cuenta</a></button>
         </div>
 
     </div>
-
-
-
-
 
 </asp:Content>

@@ -17,33 +17,8 @@ namespace Catalogo
             ArticuloNegocio negocio = new ArticuloNegocio();
             Session.Add("listaArticulos", negocio.listar());
 
-            if (!IsPostBack)
-            {
-                
-                repRepetidor.DataSource = Session["listaArticulos"];
-                repRepetidor.DataBind();
-            }
-        }
-
-        protected void btnEjemplo_Click(object sender, EventArgs e)
-        {
-            string valor = ((Button)sender).CommandArgument;
-
-
-        }
-
-        protected void txtFiltro_TextChanged(object sender, EventArgs e)
-        {
-            List<Articulo> lista = (List<Articulo>)Session["listaArticulos"];
-            List<Articulo> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
-            repRepetidor.DataSource = listaFiltrada;
-            repRepetidor.DataBind();
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-           
+           // repSlider.DataSource = Session["listaArticulos"];
+           // repSlider.DataBind();
         }
     }
 }

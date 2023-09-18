@@ -218,6 +218,10 @@ namespace negocio
             {
                 throw ex;
             }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
     }
 }

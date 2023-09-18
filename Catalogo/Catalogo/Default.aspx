@@ -3,35 +3,30 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Inicio</h1>
 
-    <div class="row">
-        <div class="col-6">
-            <div class="mb-3">
-                <asp:Label Text="Filtrar" runat="server" />
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtFiltro" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged" />
-            </div>
+   
+
+    <div class="productos-banner">
+        <img src="https://s4u.ma/wp-content/uploads/2023/06/location-materiels-informatique.png" alt="Alternate Text" />
+        <div class="banner-text">
+            <h4>Encuentra los mejores productos electrónicos en nuestro catálogo !!</h4>
         </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <asp:Repeater ID="repRepetidor" runat="server">
-            <ItemTemplate>
 
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="<%#Eval("ImagenUrl") %>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><%# Eval("Nombre") %></h5>
-                            <p class="card-text"><%# Eval("Descripcion") %></p>
-                            <p class="card-text"><%#Eval("Precio") %></p>
-
-                            <a href="DetallesArticulo.aspx?id=<%# Eval("Id") %>">Ver detalles</a>
-                            <asp:Button Text="Ejemplo" CssClass="btn btn-secondary" ID="btnEjemplo" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnEjemplo_Click" />
-                        </div>
-                    </div>
+    <footer>
+                <div class="footer-email">
+                    <p>Nuestro correo:</p>
+                    <ul>
+                        <li>jeremiasavero98@gmail.com</li>
+                    </ul>
                 </div>
-            </ItemTemplate>
-        </asp:Repeater>
-    </div>
-
+                <div class="footer-redes">
+                    <p> Seguinos en nuestras redes:</p>
+                    <ul>
+                        <li> <a href=""></a></li>
+                        <li> <a href="#"></a></li>
+                        <li> <a href="#"></a></li>
+                    </ul>
+                </div>
+            </footer>
 </asp:Content>
