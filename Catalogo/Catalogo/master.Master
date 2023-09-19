@@ -30,7 +30,7 @@
                         <ul>
                             <a href="Default.aspx">Inicio</a>
                             <a href="Productos.aspx">Catálogo</a>
-                            <a href="">Contacto</a>
+                            <a href="Default.aspx">Contacto</a>
                             <%if (Session["usuario"] != null)
                                 {%>
                             <a href="Favoritos.aspx">Favoritos</a>
@@ -51,19 +51,9 @@
                     </div>
 
                     <div class="header-perfil">
-                        <%if (Session["usuario"] == null)
-                            {
-                        %><a href="MenuLogin.aspx">
-                            <img src="https://cdn-icons-png.flaticon.com/512/5987/5987462.png" alt=""></a>
-                        <%
-                            }
-                            else
-                            {
-                        %>
                         <a href="MiPerfil.aspx">
-                           <img src="https://fotografias.lasexta.com/clipping/cmsimages02/2019/11/14/66C024AF-E20B-49A5-8BC3-A21DD22B96E6/default.jpg?crop=1299,731,x0,y0&width=1900&height=1069&optimize=low" alt=""></a>
-                        <%
-                            }%>
+                            <asp:Image ImageUrl="https://cdn-icons-png.flaticon.com/512/5987/5987462.png" CssClass="img-perfil" ID="imgPerfil" runat="server" />
+                            </a>
                     </div>
                 </div>
                 <div class="header-buscar">

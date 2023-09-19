@@ -1,46 +1,54 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="MiPerfil.aspx.cs" Inherits="Catalogo.MiPerfil" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Mi Perfil</h1>
 
-    <div class="row">
-        <div class="col-md-4">
-            <div class="mb-3">
-                <asp:Label Text="Nombre" CssClass="form-label" ID="lblNombre" runat="server" />
-                <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" />
+    <div class="perfil-titulo">
+        <hr />
+        <h1>Mi Perfil</h1>
+        <hr />
+    </div>
+    <div class="perfil-container">
+        
+        <div class="perfil-col-1">
+            <div class="perfil-component">
+                <asp:Label Text="Nombre" ID="lblNombre" CssClass="perfil-label" runat="server" />
+                <asp:TextBox runat="server" ID="txtNombre"  CssClass="perfil-text form-control" />
             </div>
-            <div class="mb-3">
-                 <asp:Label Text="Apellido" CssClass="form-label" ID="lblApellido" runat="server" />
-                <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" />
+            <div class="perfil-component">
+                <asp:Label Text="Apellido" ID="lblApellido" CssClass="perfil-label" runat="server" />
+                <asp:TextBox runat="server" ID="txtApellido" CssClass="perfil-text form-control" />
             </div>
-            <div class="mb-3">
-                 <asp:Label Text="Email" CssClass="form-label" ID="lblEmail" runat="server" />
-                <asp:TextBox runat="server" ReadOnly="true" ID="txtEmail" CssClass="form-control" />
+            <div class="perfil-component">
+                <asp:Label Text="Email" ID="lblEmail" runat="server" CssClass="perfil-label"/>
+                <asp:TextBox runat="server" ReadOnly="true" ID="txtEmail" CssClass="perfil-text form-control" />
+            </div>
+            <div class="perfil-component">
+                <a href="Favoritos.aspx">Mis favoritos</a>
+            </div>
+            <div class="perfil-component">
+                <asp:Button Text="Guardar" OnClick="btnGuardar_Click" ID="btnGuardar" runat="server" />
+            </div>
+            <div class="perfil-component">
+                <a href="Default.aspx">Volver</a>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="mb-3">
-                <asp:Label Text="Imagen de perfil" ID="lblImagenPerfil" CssClass="form-label" runat="server" />
-                <input type="file" id="txtImagenUrl" class="form-control" runat="server" />
+        <div class="perfil-col-2">
+            <div class="perfil-component">
+                <asp:Label Text="Imagen de perfil" ID="lblImagenPerfil" CssClass="perfil-label" runat="server"  />
+                <input type="file" id="txtImagenUrl" runat="server" CssClass="perfil-file" />
             </div>
-            <div class="mb-3">
+            <div class="perfil-image">
                 <asp:Image ImageUrl="https://www.palomacornejo.com/wp-content/uploads/2021/08/no-image.jpg" CssClass="img-fluid mb-3" ID="imgUrl" runat="server" />
             </div>
-        </div>
-
-        <div class="mb-3">
-            <a href="Favoritos.aspx" class="btn btn-secondary">Mis favoritos</a>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <asp:Button Text="Guardar" OnClick="btnGuardar_Click" ID="btnGuardar" CssClass="btn btn-secondary"  runat="server" />
-                <a href="Default.aspx" class="btn btn-secondary">Volver</a>
+            <div class="perfil-component">
+                <asp:Button Text="Cerrar sesión" ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" runat="server" />
             </div>
         </div>
-         
+
+
     </div>
-  
+
 </asp:Content>

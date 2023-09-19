@@ -29,11 +29,11 @@ namespace Catalogo
             if (seguridad.SesionActiva(Session["usuario"]))
             {
                 Usuario usuario = (Usuario)Session["usuario"];
-                //lblUser.Text = usuario.Nombre;
-                //if (!string.IsNullOrEmpty(usuario.UrlImagen))
-                  //  imgAvatar.ImageUrl = "~/Images/" + usuario.UrlImagen;
-                //else
-                  //  imgAvatar.ImageUrl = "https://simg.nicepng.com/png/small/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png";
+
+                if (!string.IsNullOrEmpty(usuario.UrlImagen))
+                    imgPerfil.ImageUrl = "~/Images/" + usuario.UrlImagen;
+                else
+                    imgPerfil.ImageUrl = "https://fotografias.lasexta.com/clipping/cmsimages02/2019/11/14/66C024AF-E20B-49A5-8BC3-A21DD22B96E6/default.jpg?crop=1299,731,x0,y0&width=1900&height=1069&optimize=low";
 
             }
 

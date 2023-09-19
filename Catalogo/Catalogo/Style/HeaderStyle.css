@@ -72,7 +72,7 @@ a {
             margin-right: 100px;
         }
 
-            .header .header-top .header-perfil a img {
+            .header .header-top .header-perfil a .img-perfil {
                 object-fit: contain;
                 height: 100%;
                 width: 100%;
@@ -107,7 +107,7 @@ a {
         .header .header-top .header-list a {
             margin:0;
             margin-right:9px;
-            font-size: 0.7em;
+            font-size: 1em;
         }
    }
 
@@ -121,7 +121,7 @@ a {
 
     }
     .header .header-top .header-logo {
-        margin-right:0x;
+        margin-right:0px;
         margin-left: 20px;
         height: 70px;
         width: 70px;

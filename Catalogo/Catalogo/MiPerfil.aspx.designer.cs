@@ -69,6 +69,15 @@ namespace Catalogo
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
+        /// btnGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
+
+        /// <summary>
         /// lblImagenPerfil control.
         /// </summary>
         /// <remarks>
@@ -96,12 +105,12 @@ namespace Catalogo
         protected global::System.Web.UI.WebControls.Image imgUrl;
 
         /// <summary>
-        /// btnGuardar control.
+        /// btnCerrarSesion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardar;
+        protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
     }
 }
