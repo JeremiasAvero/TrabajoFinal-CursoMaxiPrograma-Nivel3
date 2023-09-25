@@ -2,8 +2,29 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>articulos favoritos</h1>
-    <asp:Button Text="hola" ID="btnHola" CssClass="btn btn-primary" OnClick="btnHola_Click" runat="server" />
-    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+    <div class="favoritos-h1">
+         <h1 >Articulos favoritos</h1>
+    </div>
+    <div class="catalogo-container">
+
+        <asp:Repeater ID="repRepetidor" runat="server">
+            <ItemTemplate>
+
+
+                <div class="catalogo-carta">
+                    <img src="<%#Eval("ImagenUrl") %>" alt="...">
+                    <div class="carta-text">
+                        <h5><%# Eval("Nombre") %></h5>
+                        <p><%# Eval("Descripcion") %></p>
+                        <p><%#Eval("Precio") %></p>
+
+                        <a href="DetallesArticulo.aspx?id=<%# Eval("Id") %>">Ver detalles</a>                      
+                   </div>
+                </div>
+
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
+ 
 </asp:Content>
 

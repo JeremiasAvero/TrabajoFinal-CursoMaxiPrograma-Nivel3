@@ -3,8 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row">
-        <div class="col-6">
+    <div class="alta-art-container">
+        <div class="alta-art-col-1">
             <asp:TextBox ID="txtId" runat="server" CssClass="form-control" type="hidden" />
             <div class="mb-3">
                 <asp:Label ID="lblCodigo" runat="server" CssClass="form-label" Text="Codigo"></asp:Label>
@@ -32,7 +32,7 @@
             </div>
 
         </div>
-        <div class="col-6">
+        <div class="alta-art-col-2">
             <div>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
@@ -46,38 +46,38 @@
                 </asp:UpdatePanel>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <a href="ListaArticulos.aspx" class="btn btn-primary">Volver</a>
-                </div>
-            </div>
-            <div class="col">
-                <div class="mb-3">
-                    <asp:Button ID="btnAgregar" class="btn btn-primary" runat="server" Text="Agregar" OnClick="btnAgregar_Click" />
-                </div>
-            </div>
-
-
-
-            <asp:UpdatePanel runat="server">
-                <ContentTemplate>
-                    <div class="col">
-                        <div class="mb-3">
-                            <asp:Button ID="btnEliminar" CssClass="btn btn-danger" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
-                        </div>
-                    </div>
-                    <%if (ConfirmarEliminacion)
-                        { %>
-                    <div class="mb-3">
-                        <asp:CheckBox Text="Confirmar eliminación" ID="chkConfirmarEliminar" runat="server" />
-                        <asp:Button Text="Eliminar" ID="btnconfirmarEliminar" CssClass="btn btn-danger" runat="server" OnClick="btnconfirmarEliminar_Click" />
-                    </div>
-                    <%} %>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
     </div>
+    <div class="alta-art-row">
+        <div class="alta-row-col">
+            <div class="mb-3">
+                <a href="ListaArticulos.aspx" class="btn btn-primary">Volver</a>
+            </div>
+        </div>
+        <div class="alta-row-col">
+            <div class="mb-3">
+                <asp:Button ID="btnAgregar" class="btn btn-primary" runat="server" Text="Agregar" OnClick="btnAgregar_Click" />
+            </div>
+        </div>
+
+
+
+        <asp:UpdatePanel runat="server">
+            <ContentTemplate>
+                <div class="alta-row-col">
+                    <div class="mb-3">
+                        <asp:Button ID="btnEliminar" CssClass="btn btn-danger" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
+                    </div>
+                </div>
+                <%if (ConfirmarEliminacion)
+                    { %>
+                <div class="mb-3">
+                    <asp:CheckBox Text="Confirmar eliminación" ID="chkConfirmarEliminar" runat="server" />
+                    <asp:Button Text="Eliminar" ID="btnconfirmarEliminar" CssClass="btn btn-danger" runat="server" OnClick="btnconfirmarEliminar_Click" />
+                </div>
+                <%} %>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
+
 
 </asp:Content>

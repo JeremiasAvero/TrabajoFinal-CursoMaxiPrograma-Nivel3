@@ -12,17 +12,27 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
-        public List<Articulo> listar(string id = "")
+        public List<Articulo> listar(string idArticulo = "", int idUser = 0)
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                if (id != "")
-                    datos.Consulta("Select A.Id, Codigo, Nombre, A.Descripcion, ImagenUrl, Precio, A.IdMarca, A.IdCategoria, M.Id, M.Descripcion Marca, C.Id, C.Descripcion Categoria From ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca And C.Id = A.IdCategoria and A.Id = " + id);
+                if (idArticulo != "")
+                {
+                    datos.Consulta("Select A.Id, Codigo, Nombre, A.Descripcion, ImagenUrl, Precio, A.IdMarca, A.IdCategoria, M.Id, M.Descripcion Marca, C.Id, C.Descripcion Categoria From ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca And C.Id = A.IdCategoria and A.Id = " + idArticulo);
+                }
+                else if (idUser != 0)
+                {
+                    datos.Procedimiento("listarFavoritos");
+                    datos.Parametro("IdUser", idUser);
+                }
                 else
+                {
                     datos.Procedimiento("listarArticulo");
+                }
+                    
  
                 datos.Lectura();
 

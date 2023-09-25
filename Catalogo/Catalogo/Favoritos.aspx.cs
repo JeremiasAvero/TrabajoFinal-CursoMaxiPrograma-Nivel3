@@ -13,6 +13,15 @@ namespace Catalogo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            if (Session["usuario"] != null)
+            {
+
+                Session.Add("listaFavoritos", negocio.listar("", ((Usuario)Session["usuario"]).Id));
+                repRepetidor.DataSource = (Session["listaFavoritos"]);
+                repRepetidor.DataBind();
+            }
+           
             
            
         }

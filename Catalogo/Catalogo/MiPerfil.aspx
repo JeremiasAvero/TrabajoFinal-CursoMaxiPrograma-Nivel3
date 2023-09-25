@@ -24,15 +24,7 @@
                 <asp:Label Text="Email" ID="lblEmail" runat="server" CssClass="perfil-label"/>
                 <asp:TextBox runat="server" ReadOnly="true" ID="txtEmail" CssClass="perfil-text form-control" />
             </div>
-            <div class="perfil-component">
-                <a href="Favoritos.aspx">Mis favoritos</a>
-            </div>
-            <div class="perfil-component">
-                <asp:Button Text="Guardar" OnClick="btnGuardar_Click" ID="btnGuardar" runat="server" />
-            </div>
-            <div class="perfil-component">
-                <a href="Default.aspx">Volver</a>
-            </div>
+           
         </div>
 
         <div class="perfil-col-2">
@@ -44,11 +36,22 @@
                 <asp:Image ImageUrl="https://www.palomacornejo.com/wp-content/uploads/2021/08/no-image.jpg" CssClass="img-fluid mb-3" ID="imgUrl" runat="server" />
             </div>
             <div class="perfil-component">
-                <asp:Button Text="Cerrar sesión" ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" runat="server" />
+                <asp:Button Text="Cerrar sesión" ID="btnCerrarSesion" cssClass="btn btn-primary" OnClick="btnCerrarSesion_Click" runat="server" />
             </div>
         </div>
 
 
+    </div>
+    <div class="perfil-row">
+         <div class="perfil-component">
+                <a class="btn btn-primary" href="Favoritos.aspx">Mis favoritos</a>
+            </div>
+            <div class="perfil-component">
+                <asp:Button Text="Guardar" OnClick="btnGuardar_Click" class="btn btn-primary" ID="btnGuardar" runat="server" />
+            </div>
+            <div class="perfil-component">
+                <a class="btn btn-primary" href="Default.aspx">Volver</a>
+            </div>
     </div>
 
 </asp:Content>

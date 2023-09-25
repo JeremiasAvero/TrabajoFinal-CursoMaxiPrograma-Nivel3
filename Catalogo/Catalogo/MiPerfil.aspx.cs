@@ -78,7 +78,7 @@ namespace Catalogo
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            Session.Remove("usuario");
+            Session.Clear();
             Response.Redirect("Default.aspx");
         }
     }

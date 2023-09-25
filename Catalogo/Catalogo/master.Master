@@ -23,23 +23,25 @@
             <header class="header">
                 <div class="header-top">
                     <div class="header-logo">
-                        <a href="Default.aspx">
-                            <img src="https://thumbs.dreamstime.com/b/dise%C3%B1o-del-logotipo-de-la-electr%C3%B3nica-digitaces-104447492.jpg" alt="Alternate Text" /></a>
+                        <h1> <a href="Default.aspx"> Catalogo</a></h1>
+                       
                     </div>
                     <div class="header-list">
                         <ul>
-                            <a href="Default.aspx">Inicio</a>
-                            <a href="Productos.aspx">Catálogo</a>
-                            <a href="Default.aspx">Contacto</a>
+                            <a href="Default.aspx">Home</a>
+                            
                             <%if (Session["usuario"] != null)
                                 {%>
-                            <a href="Favoritos.aspx">Favoritos</a>
+                            <a href="MiPerfil.aspx">Mi perfil</a>
+                            <a href="Favoritos.aspx">Mis favoritos</a>
+                            
 
                             <%
                                 }
                                 else
                                 {
                             %><a href="MenuLogin.aspx">Ingresar</a>
+                            <a href="MenuRegistrarse.aspx">Registrarse</a>
                             <%
                                 }
                                 if (Admin)
@@ -47,6 +49,7 @@
                             %><a href="ListaArticulos.aspx">Articulos</a>
                             <%
                                 }%>
+                            
                         </ul>
                     </div>
 
@@ -57,7 +60,7 @@
                     </div>
                 </div>
                 <div class="header-buscar">
-                    <asp:TextBox runat="server" placeholder="Buscar..." CssClass="form-control" ID="txtFiltro" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged" />
+                    <asp:TextBox runat="server" placeholder="Buscar..." CssClass="input form-control" ID="txtFiltro" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged" />
                 </div>
             </header>
             <div class="container-master">

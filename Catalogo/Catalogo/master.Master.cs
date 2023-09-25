@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -19,7 +20,7 @@ namespace Catalogo
             Admin = false;
 
 
-            if(!(Page is MenuLogin || Page is Default || Page is MenuRegistrarse || Page is Error || Page is Productos))
+            if(!(Page is MenuLogin || Page is Default || Page is MenuRegistrarse || Page is Error))
             {
                 if (!(seguridad.SesionActiva(Session["usuario"])))
                 {
@@ -45,6 +46,12 @@ namespace Catalogo
             {
                 Admin = false;
             }
+            
+            if(txtFiltro.Text == "")
+            {
+                Session.Remove("filtro");
+            }
+
         }
 
         protected void btnSalir_Click(object sender, EventArgs e)
@@ -57,11 +64,22 @@ namespace Catalogo
         {
             if (txtFiltro.Text != null)
             {
+                if(txtFiltro.Text != "")
+                {
+                    
+                    Session.Add("filtro", txtFiltro.Text);
+                    Response.Redirect("Default.aspx", false);
 
-                Session.Add("filtro", txtFiltro.Text);
+                }
+                else
+                {
+                    Session.Remove("filtro");
+                    Response.Redirect("Default.aspx", false);
+
+                }
 
             }
-            Response.Redirect("Productos.aspx");
+            
             
         }
     }

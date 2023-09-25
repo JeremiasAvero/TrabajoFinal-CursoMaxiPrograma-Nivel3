@@ -77,7 +77,6 @@
     <Content Include="MenuLogin.aspx" />
     <Content Include="MenuRegistrarse.aspx" />
     <Content Include="MiPerfil.aspx" />
-    <Content Include="Productos.aspx" />
     <Content Include="Script\SliderScript.js" />
     <Content Include="Style\GeneralStyle.css" />
     <Content Include="Style\SliderStyle.css" />
@@ -157,13 +156,6 @@
     </Compile>
     <Compile Include="MiPerfil.aspx.designer.cs">
       <DependentUpon>MiPerfil.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Productos.aspx.cs">
-      <DependentUpon>Productos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Productos.aspx.designer.cs">
-      <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

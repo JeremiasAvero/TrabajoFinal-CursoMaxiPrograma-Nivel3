@@ -20,10 +20,10 @@ namespace Catalogo
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
             try
-            {
-                Usuario user = new Usuario(); 
-                UsuarioNegocio negocio = new UsuarioNegocio();  
-                EmailService emailService = new EmailService(); 
+           {
+                Usuario user = new Usuario();
+                UsuarioNegocio negocio = new UsuarioNegocio();
+                EmailService emailService = new EmailService();
 
 
                 user.Nombre = txtNombre.Text;
@@ -34,21 +34,28 @@ namespace Catalogo
                     Session.Add("error", "Este email ya esta en uso");
                     Response.Redirect("MenuRegistrarse.aspx");
                 }
-                
-                    user.Password = txtPass.Text;
-                    user.Admin = (Usuario.TipoUsuario.NORMAL);
-                    user.UrlImagen = "NADA POR AHORA";
 
-                    int id = negocio.Registrar(user);
+                user.Password = txtPass.Text;
+                user.Admin = (Usuario.TipoUsuario.NORMAL);
+                if (txtImagenUrl.PostedFile.FileName != "")
+                {
+                    string ruta = Server.MapPath("./Images/    ");
+                    txtImagenUrl.PostedFile.SaveAs(ruta + "perfil-" + user.Id + ".jpg");
+                    user.UrlImagen = "perfil-" + user.Id + ".jpg";
+                }
 
-                    emailService.armarCorreo(user.Email, "Bienvenido" + user.Nombre + "!! ", "Bienvenido a mi catalogo");
-                    emailService.enviarEmail();
-                    Session.Add("usuario", user);
-                    Response.Redirect("Default.aspx");
-                
-                
+                int id = negocio.Registrar(user);
+                negocio.Login(user);
+
+                emailService.armarCorreo(user.Email, "Bienvenido" + user.Nombre + "!! ", "Bienvenido a mi catalogo");
+                emailService.enviarEmail();
+
+                Session.Add("usuario", user);
+                Response.Redirect("Default.aspx");
+
+
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Session.Add("error", ex);
             }
