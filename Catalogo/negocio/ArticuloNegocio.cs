@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -152,22 +153,25 @@ namespace negocio
         { 
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
+            Articulo articulof = new Articulo();
+            
             try
             {
                 string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion, ImagenUrl, Precio,  M.Descripcion Marca, C.Descripcion Categoria, IdCategoria, IdMarca From ARTICULOS A, MARCAS M, CATEGORIAS C Where  A.IdMarca = M.Id And A.IdCategoria = C.Id And ";
 
                 if (campo == "Precio") 
                 {
+                    articulof.Precio = decimal.Parse(filtro);
                     switch (criterio)
                     {
                         case "Mayor a":
-                            consulta += "Precio > " + filtro;
+                            consulta += "Precio > " + articulof.Precio.ToString(CultureInfo.InvariantCulture); // Usar CultureInfo.InvariantCulture;
                             break;
                         case "Menor a":
-                            consulta += "Precio < " + filtro;
+                            consulta += "Precio < " + articulof.Precio.ToString(CultureInfo.InvariantCulture); // Usar CultureInfo.InvariantCulture;
                             break;
                         case "Igual a":
-                            consulta += "Precio = " + filtro;
+                            consulta += "Precio = " + articulof.Precio.ToString(CultureInfo.InvariantCulture); // Usar CultureInfo.InvariantCulture;
                             break;
                         default:
                             break;

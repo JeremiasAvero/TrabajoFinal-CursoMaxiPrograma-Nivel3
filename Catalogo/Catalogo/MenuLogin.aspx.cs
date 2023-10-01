@@ -18,26 +18,36 @@ namespace Catalogo
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            Usuario usuario;
-            UsuarioNegocio negocio = new UsuarioNegocio();
+            Page.Validate();
+            if(!Page.IsValid)
+            { return; }
 
             try
             {
-                usuario = new Usuario(txtEmail.Text, txtPassword.Text, false);
-                if (negocio.Login(usuario))
-                {
-                    Session.Add("usuario", usuario);
-                    Response.Redirect("MiPerfil.aspx", false);
-                }
+                if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtPassword.Text))
+                    Response.Redirect("MenuLogin.aspx", false);
                 else
                 {
-                    Session.Add("error", "user o pass incorrectas");
-                    Response.Redirect("MenuLogin.aspx", false);
+                    Usuario usuario;
+                    UsuarioNegocio negocio = new UsuarioNegocio();
+                    usuario = new Usuario(txtEmail.Text, txtPassword.Text, false);
+                    if (negocio.Login(usuario))
+                    {
+                        Session.Add("usuario", usuario);
+                        Response.Redirect("MiPerfil.aspx", false);
+                    }
+                    else
+                    {
+                        Session.Add("error", "user o pass incorrectas");
+                        Response.Redirect("MenuLogin.aspx", false);
+                    }
                 }
+
             }
             catch (Exception ex)
             {
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
             }
         }
     }

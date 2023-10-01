@@ -108,8 +108,18 @@ namespace Negocio
             {
                 datos.CerrarConexion();
             }
-
-            
         }
+        public void ActualizarImagen(int id, string url)
+          {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.Procedimiento("ActualizarImagen");
+                datos.Parametro("id", id);
+                datos.Parametro("@UrlImagen", url);
+                datos.Ejecutar();
+            }
+            catch (Exception ex) { throw ex; }      
+            }
     }
 }

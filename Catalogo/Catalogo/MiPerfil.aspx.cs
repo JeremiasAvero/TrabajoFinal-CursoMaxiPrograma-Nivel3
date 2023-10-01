@@ -28,27 +28,24 @@ namespace Catalogo
                         txtEmail.Text = usuario.Email;
                         
                         if (!string.IsNullOrEmpty(usuario.UrlImagen))
-                            imgUrl.ImageUrl = "~/Images/" + usuario.UrlImagen;
+                            imgNuevoPerfil.ImageUrl = "~/Images/" + usuario.UrlImagen;
                     }
                 }
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
-            
-
-
-
-
-
-
         }
-
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                { return; }
+
                 UsuarioNegocio negocio = new UsuarioNegocio();
                 Usuario usuario = (Usuario)Session["usuario"];
 
@@ -58,22 +55,22 @@ namespace Catalogo
                     txtImagenUrl.PostedFile.SaveAs(ruta + "perfil-" + usuario.Id + ".jpg");
                     usuario.UrlImagen = "perfil-" + usuario.Id + ".jpg";
                 }
-                
-               
-            
+
                 usuario.Nombre = txtNombre.Text;
                 usuario.Apellido = txtApellido.Text;
                 usuario.Email = txtEmail.Text;
-                
+
                 negocio.Actualizar(usuario);
 
-                Image img = (Image)Master.FindControl("imgAvatar");
+                Image img = (Image)Master.FindControl("imgPerfil");
                 img.ImageUrl = "~/Images/" + usuario.UrlImagen;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
+
         }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)

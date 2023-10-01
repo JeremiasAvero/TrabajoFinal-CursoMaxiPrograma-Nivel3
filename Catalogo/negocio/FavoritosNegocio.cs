@@ -30,7 +30,26 @@ namespace negocio
                 datos.CerrarConexion();
             }
         }
-        
-       
+        public void borrarFavorito(int idArticulo, int idUser)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.Procedimiento("borrarFavorito");
+                datos.Parametro("IdArticulo", idArticulo);
+                datos.Parametro("IdUser", idUser);
+                datos.Ejecutar();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
     }
 }

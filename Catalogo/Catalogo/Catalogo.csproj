@@ -72,7 +72,6 @@
     <Content Include="Favoritos.aspx" />
     <Content Include="ListaArticulos.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="DetallesArticulo.aspx" />
     <Content Include="Global.asax" />
     <Content Include="MenuLogin.aspx" />
     <Content Include="MenuRegistrarse.aspx" />
@@ -118,13 +117,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DetallesArticulo.aspx.cs">
-      <DependentUpon>DetallesArticulo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DetallesArticulo.aspx.designer.cs">
-      <DependentUpon>DetallesArticulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

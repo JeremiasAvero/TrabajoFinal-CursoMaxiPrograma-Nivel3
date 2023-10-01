@@ -14,18 +14,34 @@ namespace Catalogo
     public partial class AltaArticulos : System.Web.UI.Page
     {
         public bool ConfirmarEliminacion { get; set; }
+        public bool Admin { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            ConfirmarEliminacion = false; 
+            ConfirmarEliminacion = false;
+            Admin = false;
             try
             {
                 UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
                 Seguridad seguridad = new Seguridad();
                 Usuario usuario = (Usuario)Session["usuario"];
 
-                if ( usuario == null || !seguridad.EsAdmin(usuario) )
+                if (!seguridad.EsAdmin(usuario))
                 {
-                    Response.Redirect("ListaArticulos.aspx");
+                    txtCodigo.ReadOnly = true;
+                    txtDescripcion.ReadOnly = true;
+                    txtImagenUrl.ReadOnly = true;
+                    txtNombre.ReadOnly = true;
+                    txtPrecio.ReadOnly = true;
+                    ddlCategoria.Enabled = false;
+                    ddlMarca.Enabled = false;
+
+                    btnAgregar.Visible = false;
+                    btnEliminar.Visible = false;
+
+                }
+                else
+                {
+                    Admin = true;
                 }
 
                 if (!IsPostBack)
@@ -50,10 +66,11 @@ namespace Catalogo
 
                 // Si estamos modificando
                 string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
-                if (id != "" && !IsPostBack) 
+                if (id != "" && !IsPostBack)
                 {
+                    btnAgregar.Text = "Modificar";
                     ArticuloNegocio negocio = new ArticuloNegocio();
-                   // List<Articulo> lista = negocio.listar(id);
+                    // List<Articulo> lista = negocio.listar(id);
                     //Articulo articulo = lista[0];
                     Articulo articulo = (negocio.listar(id))[0];
                     txtId.Text = articulo.Id.ToString();
@@ -72,8 +89,9 @@ namespace Catalogo
             catch (Exception ex)
             {
                 Session.Add("error", ex);
-                throw ex;
+                Response.Redirect("Error.aspx");
             }
+
         }
 
         protected void txtImagenUrl_TextChanged(object sender, EventArgs e)
@@ -85,12 +103,16 @@ namespace Catalogo
         {
             try
             {
-                Articulo articulo = new Articulo(); 
-                ArticuloNegocio negocio = new ArticuloNegocio(); 
+                Page.Validate();
+                if (!Page.IsValid)
+                { return; }
+
+                Articulo articulo = new Articulo();
+                ArticuloNegocio negocio = new ArticuloNegocio();
 
                 articulo.CodigoArticulo = txtCodigo.Text;
-                articulo.Nombre = txtNombre.Text;   
-                articulo.Descripcion = txtDescripcion.Text; 
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
                 articulo.ImagenUrl = txtImagenUrl.Text;
 
@@ -105,16 +127,18 @@ namespace Catalogo
                     articulo.Id = int.Parse(Request.QueryString["id"]);
                     negocio.Modificar(articulo);
                 }
-                    
+
                 else
                     negocio.Agregar(articulo);
 
                 Response.Redirect("ListaArticulos.aspx", false);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
+
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -124,20 +148,26 @@ namespace Catalogo
 
         protected void btnconfirmarEliminar_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid)
+            { return; }
+
             try
             {
-                if(chkConfirmarEliminar.Checked) 
+                if (chkConfirmarEliminar.Checked)
                 {
                     ArticuloNegocio negocio = new ArticuloNegocio();
 
                     negocio.Borrar(int.Parse(txtId.Text));
-                    Response.Redirect("ListaArticulos.aspx");
+                    Response.Redirect("ListaArticulos.aspx", false);
                 }
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
+
         }
     }
 }

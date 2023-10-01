@@ -20,7 +20,7 @@ namespace Catalogo
             Admin = false;
 
 
-            if(!(Page is MenuLogin || Page is Default || Page is MenuRegistrarse || Page is Error))
+            if(!(Page is MenuLogin || Page is Default || Page is MenuRegistrarse || Page is Error || Page is AltaArticulos))
             {
                 if (!(seguridad.SesionActiva(Session["usuario"])))
                 {
@@ -68,7 +68,10 @@ namespace Catalogo
                 {
                     
                     Session.Add("filtro", txtFiltro.Text);
-                    Response.Redirect("Default.aspx", false);
+                    if(Page is Default)
+                        Response.Redirect("Default.aspx", false);
+                    else 
+                        Response.Redirect("Favoritos.aspx", false) ;
 
                 }
                 else

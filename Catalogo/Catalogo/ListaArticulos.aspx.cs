@@ -12,33 +12,54 @@ namespace Catalogo
 {
     public partial class ArticulosForm : System.Web.UI.Page
     {
-        public bool FiltroAvanzado { get; set; }   
+        public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-            Seguridad seguridad = new Seguridad();
-            Usuario usuario = (Usuario)Session["usuario"];
-
-            if(!seguridad.EsAdmin(usuario))
+            try
             {
-                Response.Redirect("Default.aspx");
+                UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                Seguridad seguridad = new Seguridad();
+                Usuario usuario = (Usuario)Session["usuario"];
+
+                if (!seguridad.EsAdmin(usuario))
+                {
+                    Response.Redirect("Default.aspx",false);
+                }
+
+
+                FiltroAvanzado = chkFiltroAvanzado.Checked;
+                if (!IsPostBack)
+                {
+                    if (ddlCampo.SelectedItem.ToString() == "Precio")
+                    {
+                        ddlCriterio.Items.Add("Igual a");
+                        ddlCriterio.Items.Add("Menor a");
+                        ddlCriterio.Items.Add("Mayor a");
+
+                    }
+                    else
+                    {
+                        ddlCriterio.Items.Add("Empieza con");
+                        ddlCriterio.Items.Add("Termina con");
+                        ddlCriterio.Items.Add("Contiene");
+                    }
+                    ArticuloNegocio negocio = new ArticuloNegocio();
+                    Session.Add("listaArticulos", negocio.listar());
+                    dgvArticulos.DataSource = Session["listaArticulos"];
+                    dgvArticulos.DataBind();
+                }
             }
-            
-
-            FiltroAvanzado = chkFiltroAvanzado.Checked;
-            if(!IsPostBack)
+            catch (Exception ex)
             {
-                ArticuloNegocio negocio = new ArticuloNegocio();
-                Session.Add("listaArticulos", negocio.listar());
-                dgvArticulos.DataSource = Session["listaArticulos"];
-                dgvArticulos.DataBind();
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
 
         }
 
         protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string id =dgvArticulos.SelectedDataKey.Value.ToString();
+            string id = dgvArticulos.SelectedDataKey.Value.ToString();
             Response.Redirect("AltaArticulos.aspx?id= " + id);
         }
 
@@ -59,7 +80,7 @@ namespace Catalogo
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlCriterio.Items.Clear();
-            if(ddlCampo.SelectedItem.ToString() == "Precio")
+            if (ddlCampo.SelectedItem.ToString() == "Precio")
             {
                 ddlCriterio.Items.Add("Igual a");
                 ddlCriterio.Items.Add("Menor a");
@@ -85,12 +106,22 @@ namespace Catalogo
         {
             try
             {
-                 
+                Page.Validate();
+                if (!Page.IsValid)
+                { return; }
                 ArticuloNegocio Anegocio = new ArticuloNegocio();
-                dgvArticulos.DataSource = Anegocio.filtrar(ddlCampo.SelectedItem.ToString(), ddlCriterio.SelectedItem.ToString(),  txtfiltroAvanzado.Text);
-                dgvArticulos.DataBind();    
+                if(txtfiltroAvanzado.Text != null)
+                {
+                    if(txtfiltroAvanzado.Text != "")
+                    {
+
+                        dgvArticulos.DataSource = Anegocio.filtrar(ddlCampo.SelectedItem.ToString(), ddlCriterio.SelectedItem.ToString(), txtfiltroAvanzado.Text);
+                        dgvArticulos.DataBind();
+                    }
+                    
+                }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Session.Add("error", ex);
                 throw;
