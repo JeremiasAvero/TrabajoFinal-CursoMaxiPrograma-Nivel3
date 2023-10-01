@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="AltaArticulos.aspx.cs" Inherits="Catalogo.AltaArticulos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        function confirmarAccion() {
+            return confirm("¿Estás seguro de que deseas eliminar este artículo?");
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="alta-art-container">
@@ -56,7 +61,6 @@
         </div>
     </div>
 
-    </div>
     <div class="alta-art-row">
         <% if (Admin)
             {
@@ -70,16 +74,11 @@
             <ContentTemplate>
                 <div class="alta-row-col">
                     <div class="mb-3">
-                        <asp:Button ID="btnEliminar" CssClass="btn btn-danger" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
+                        <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" runat="server" OnClick="btnEliminar_Click" OnClientClick="return confirmarAccion();" />
+
                     </div>
                 </div>
-                <%if (ConfirmarEliminacion)
-                    { %>
-                <div class="mb-3">
-                    <asp:CheckBox Text="Confirmar eliminación" ID="chkConfirmarEliminar" runat="server" />
-                    <asp:Button Text="Eliminar" ID="btnconfirmarEliminar" CssClass="btn btn-danger" runat="server" OnClick="btnconfirmarEliminar_Click" />
-                </div>
-                <%} %>
+
             </ContentTemplate>
         </asp:UpdatePanel>
         <%

@@ -13,11 +13,10 @@ namespace Catalogo
 {
     public partial class AltaArticulos : System.Web.UI.Page
     {
-        public bool ConfirmarEliminacion { get; set; }
         public bool Admin { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            ConfirmarEliminacion = false;
+
             Admin = false;
             try
             {
@@ -143,31 +142,23 @@ namespace Catalogo
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            ConfirmarEliminacion = true;
-        }
-
-        protected void btnconfirmarEliminar_Click(object sender, EventArgs e)
-        {
             Page.Validate();
             if (!Page.IsValid)
             { return; }
 
             try
             {
-                if (chkConfirmarEliminar.Checked)
-                {
-                    ArticuloNegocio negocio = new ArticuloNegocio();
+                ArticuloNegocio negocio = new ArticuloNegocio();
 
-                    negocio.Borrar(int.Parse(txtId.Text));
-                    Response.Redirect("ListaArticulos.aspx", false);
-                }
+                negocio.Borrar(int.Parse(txtId.Text));
+                Response.Redirect("ListaArticulos.aspx", false);
+
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex);
                 Response.Redirect("Error.aspx");
             }
-
         }
     }
 }
