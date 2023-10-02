@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Runtime.Remoting.Messaging;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices.ComTypes;
+using System.Configuration;
+using System.Web.Configuration;
 
 namespace negocio
 {
@@ -15,7 +17,7 @@ namespace negocio
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;
-        
+
         public SqlDataReader Lector
         {
             get { return lector; }
@@ -23,7 +25,9 @@ namespace negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true");
+            
+            conexion = new SqlConnection(WebConfigurationManager.AppSettings["cadenaConexion"]);
+            //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true");
             comando = new SqlCommand();
         }
 
@@ -47,7 +51,7 @@ namespace negocio
                 conexion.Open();
                 lector = comando.ExecuteReader();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -59,11 +63,11 @@ namespace negocio
             try
             {
                 conexion.Open();
-                comando.ExecuteNonQuery();  
+                comando.ExecuteNonQuery();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                throw ex; 
+                throw ex;
             }
         }
 
@@ -95,5 +99,5 @@ namespace negocio
 
     }
 
-   
+
 }
