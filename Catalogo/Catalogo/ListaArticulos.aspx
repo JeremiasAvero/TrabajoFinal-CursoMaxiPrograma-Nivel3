@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="filtro-avanzado-row">
-                            <asp:Button Text="Filtrar" ID="btnFiltroAvanzado" runat="server" OnClick="btnFiltroAvanzado_Click" />
+                            <asp:Button Text="Filtrar" ID="btnFiltroAvanzado" CssClass="btn btn-primary" runat="server" OnClick="btnFiltroAvanzado_Click" />
                         </div>
                         <%} %>
                     </div>
@@ -71,7 +71,7 @@
                 <div class="articulos-lista">
                     <asp:GridView runat="server" ID="dgvArticulos" DataKeyNames="id" CssClass="table table-dark" AutoGenerateColumns="false"
                         OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged" OnPageIndexChanging="dgvArticulos_PageIndexChanging"
-                        AllowPaging="true" PageSize="7">
+                        AllowPaging="true" PageSize="5">
 
                         <Columns>
                             <asp:BoundField HeaderText="Codigo" DataField="CodigoArticulo" />
@@ -83,7 +83,6 @@
                             <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="Editar" />
                         </Columns>
                     </asp:GridView>
-
                     <a href="AltaArticulos.aspx" class="btn btn-primary">Agregar</a>
                 </div>
             </div>

@@ -65,8 +65,9 @@ namespace Catalogo
 
         protected void dgvArticulos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            dgvArticulos.DataSource = Session["listaArticulos"];
             dgvArticulos.PageIndex = e.NewPageIndex;
-            DataBind();
+            dgvArticulos.DataBind();
         }
 
         protected void txtFiltro_TextChanged(object sender, EventArgs e)
