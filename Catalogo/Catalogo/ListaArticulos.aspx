@@ -47,13 +47,13 @@
                                     <% if (ddlCampo.SelectedItem.ToString() == "Precio")
                                         {
                                     %>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="txtfiltroAvanzado" runat="server" ValidationExpression="^\d{1,13}(,\d{1,4})?$" ErrorMessage="Introduce números"></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="txtfiltroAvanzado" runat="server" ValidationExpression="^\d{1,23}$" ErrorMessage="Introduce solo números"></asp:RegularExpressionValidator>
                                     <% 
                                         }
                                         else
                                         {
                                     %>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="txtfiltroAvanzado" runat="server" ValidationExpression="^.{1,35}$" ErrorMessage="Introduce números"></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="txtfiltroAvanzado" runat="server" ValidationExpression="^.{1,35}$" ErrorMessage="fuera de rango"></asp:RegularExpressionValidator>
 
                                     <%
                                         }

@@ -44,7 +44,7 @@
                 <asp:Label ID="lblPrecio" runat="server" CssClass="form-label" Text="Precio"></asp:Label>
                 <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPrecio" CssClass="error-message" ErrorMessage="No has ingresado un Código"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ValidationExpression="^\d{1,13}(,\d{1,4})?$" ErrorMessage="RegularExpressionValidator" ControlToValidate="txtPrecio"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ValidationExpression="^\d{1,23}$" ErrorMessage="Comas y puntos solo para fracciones" ControlToValidate="txtPrecio"></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="alta-art-col-2">

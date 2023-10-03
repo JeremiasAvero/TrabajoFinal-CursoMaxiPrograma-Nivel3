@@ -44,6 +44,7 @@ namespace negocio
                     articulo.CodigoArticulo = (string)datos.Lector["Codigo"];
                     articulo.Nombre = (string)datos.Lector["Nombre"];
                     articulo.Descripcion = (string)datos.Lector["Descripcion"];
+                   
                     if (!(datos.Lector["ImagenUrl"] is DBNull))
                         articulo.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                     else

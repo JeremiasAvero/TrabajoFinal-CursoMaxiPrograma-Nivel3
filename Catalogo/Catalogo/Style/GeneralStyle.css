@@ -55,8 +55,16 @@ a {
         flex-direction: column;
     }
 
+    .catalogo-container .catalogo-carta .carta-text{
+
+        display:flex;
+        flex-direction:column;
+    }
+
     .catalogo-container .confirmar .confirmar-boton .btn {
+        margin:0 auto;
         width: 60px;
+        display:flex
     }
 
     .catalogo-container .catalogo-carta:hover {

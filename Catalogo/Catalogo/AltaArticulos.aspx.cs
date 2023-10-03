@@ -77,7 +77,7 @@ namespace Catalogo
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
                     txtImagenUrl.Text = articulo.ImagenUrl;
-                    txtPrecio.Text = articulo.Precio.ToString();
+                    txtPrecio.Text = articulo.Precio.ToString("0");
 
                     ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString();
                     ddlMarca.SelectedValue = articulo.Categoria.Id.ToString();
